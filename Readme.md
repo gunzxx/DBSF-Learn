@@ -1,10 +1,9 @@
-<style>
+<!-- <style>
     *{
         border-bottom: 0 !important;
     }
-</style>
+</style> -->
 <h1 align="center">Kelas DBSF Dicoding</h1>
-<hr>
 <h1>Materi</h1>
 <ol>
     <li><h2>Fundamental JavaScript</h2></li>
