@@ -1,19 +1,31 @@
 <script>
     let arr1 = ["Cokelat", 42.5, 22, true, "Programming"];
 
-    // push() => Menambah data pada array di elemen terakhir
+    // push() ==> Menambah data pada array di elemen terakhir
     arr1.push('coba');
     // Akan menghasilkan ==> ["Cokelat", 42.5, 22, true, "Programming", 'coba']
 
-    // pop() => Menghapus data pada array di elemen terakhir
+    // pop() ==> Menghapus data pada array di elemen terakhir
     arr1.pop();
     // Akan menghasilkan ==> ["Cokelat", 42.5, 22, true, "Programming", 'coba']
 
-    // shift() => Menghapus data pada array di elemen pertama
+    // shift() ==> Menghapus data pada array di elemen pertama
     arr1.shift();
     // Akan menghasilkan ==> [42.5, 22, true, "Programming", 'coba']
     
-    // unshift() => Menambah data pada array di elemen pertama
+    // unshift() ==> Menambah data pada array di elemen pertama
     arr1.unshift('Coba');
     // Akan menghasilkan ==> ['Coba', 42.5, 22, true, "Programming", 'coba']
+    
+    arr1 = ['Coba', 42.5, 22, true, "Programming", 'coba']
+
+    // delete  ==> menghapus data array tertentu dan membiarkan data menjadi kosong
+    delete arr1[1];
+    // Akan menghasilkan ==> ['Coba', , 22, true, "Programming", 'coba']
+    
+    arr1 = ['Coba', 42.5, 22, true, "Programming", 'coba']
+
+    // splice  ==> menghapus elemen tertentu pada array
+    arr1.splice(2,1); // Menghapus dari index 2 sebanyak 1 elemen
+    // Akan menghasilkan ==> ['Coba', 42.5, true, "Programming", 'coba']
 </script>

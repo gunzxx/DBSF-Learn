@@ -1,0 +1,21 @@
+<script>
+    /*
+    Kita juga bisa melakukan destructuring assignment pada array. Namun, tidak seperti object, 
+    kita tidak perlu membungkusnya dengan tanda kurung. Contohnya seperti berikut:
+    */
+
+    const favorites = ["Seafood", "Salad", "Nugget", "Soup"];
+
+    let myFood = "Ice Cream";
+    let herFood = "Noodles";
+
+    [myFood, herFood] = favorites;
+
+    console.log(myFood);
+    console.log(herFood);
+
+    /* output:
+    Seafood
+    Salad
+    */
+</script>
