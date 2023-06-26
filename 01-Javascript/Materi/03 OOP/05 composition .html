@@ -1,0 +1,103 @@
+<script>
+    // Cara lama
+    /**
+    class Developer {
+        constructor(name) {
+            this.name = name;
+        }
+
+        commitChanges() {
+            console.log(`${this.name} is committing changes...`);
+        }
+    }
+
+    class FrontEndDeveloper extends Developer {
+        buildUI() {
+            console.log(`${this.name} is building UI...`);
+        }
+    }
+
+    class BackEndDeveloper extends Developer {
+        buildAPI() {
+            console.log(`${this.name} is building API...`);
+        }
+    }
+
+    class DevOps extends Developer {
+        deployApp() {
+            console.log(`${this.name} is deploying app...`);
+        }
+    }
+
+    class FullStackDeveloper extends Developer {
+        buildUI() {
+            console.log(`${this.name} is building UI...`);
+        }
+
+        buildAPI() {
+            console.log(`${this.name} is building API...`);
+        }
+
+        deployApp() {
+            console.log(`${this.name} is deploying app...`);
+        }
+    }
+    */
+
+    class Developer {
+        constructor(name) {
+            this.name = name;
+        }
+
+        commitChanges() {
+            console.log(`${this.name} is committing changes...`);
+        }
+    }
+
+    function canBuildUI(developer) {
+        return {
+            buildUI: () => {
+                console.log(`${developer.name} is building UI...`);
+            }
+        }
+    }
+
+    function canBuildAPI(developer) {
+        return {
+            buildAPI: () => {
+                console.log(`${developer.name} is building API...`);
+            }
+        }
+    }
+
+    function canDeployApp(developer) {
+        return {
+            deployApp: () => {
+                console.log(`${developer.name} is deploying app...`);
+            }
+        }
+    }
+
+    function createFEDev(name){
+        const developer = new Developer(name);
+        return Object.assign(developer,canBuildUI(developer));
+    }
+
+    function createBEDev(name){
+        const developer = new Developer(name);
+        return Object.assign(developer,canBuildAPI(developer));
+    }
+
+    function createDevOps(name){
+        const developer = new Developer(name);
+        return Object.assign(developer,canDeployApp(developer));
+    }
+
+    function createFSDev(name){
+        const developer = new Developer(name);
+        return Object.assign(developer,canBuildUI(developer),canBuildAPI(developer),canDeployApp(developer));
+    }
+
+    const fullstack = createFSDev("Full stack");
+    fullstack.commitChanges();
+</script>
