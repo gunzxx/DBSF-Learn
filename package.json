@@ -1,7 +1,6 @@
 {
   "name": "dbsf",
   "version": "1.0.0",
-  "type": "module",
   "description": "DBSF - Pemrograman Dasar JavaScript",
   "main": "index.js",
   "scripts": {
