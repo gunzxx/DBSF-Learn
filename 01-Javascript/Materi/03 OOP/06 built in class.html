@@ -1,0 +1,38 @@
+<script>
+    // Date
+    const date = new Date();
+
+    const timeJakarta = date.toLocaleString('id-ID',{
+        timeZone : "Asia/Jakarta"
+    });
+
+    console.log(timeJakarta);
+    
+    const timeInTokyo = date.toLocaleString('ja-JP', {
+        timeZone: 'Asia/Tokyo',
+    });
+
+    console.log(timeInTokyo);
+
+
+    // Array
+    class UniqueArray extends Array {
+        constructor(...args) {
+            const uniqueValue = args.filter((item, index) => args.indexOf(item) === index);
+
+            super(...uniqueValue);
+        }
+
+        push(item) {
+            if (!this.includes(item)) {
+                super.push(item);
+            }
+        }
+    }
+
+    const someArray = new UniqueArray('a', 'b', 'c', 'a', 'b', 'c');
+    console.log(someArray);
+    
+    someArray.push("a")
+    console.log(someArray);
+</script>
