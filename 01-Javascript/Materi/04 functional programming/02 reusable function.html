@@ -1,0 +1,115 @@
+<script>
+    /**
+     * Pada materi kali ini kita tidak berfokus untuk membuat banyak reusable function di JavaScript. Kami percaya, dengan memahami 
+     * konsep functional programming secara matang, Anda dapat membuatnya sendiri sesuai kebutuhan.
+    */
+    
+    /**
+     * Array Map : fungsi map akan mengembalikan array baru. Nilai tiap item pada array yang dikembalikan, dihasilkan dari kembalian 
+     * callback function-nya. Karena callback function dapat mengakses item array, biasanya developer menggunakannya untuk menghasilkan 
+     * nilai baru.
+    */
+    const newArray = ['Harry', 'Ron', 'Jeff', 'Thomas'].map((name) => { return `Cuy ${name}!` });
+    console.log(newArray);
+
+    /**
+     * Array Filter : Cara kerja fungsi ini mirip seperti array.map(). Namun, callback function dari fungsi ini harus mengembalikan 
+     * boolean. Di mana nilai boolean ini digunakan untuk menentukan apakah item array lolos saring atau tidak.
+    */
+    const truthyArray = [1, '', 'Hallo', 0, null, 'Harry', 14].filter((item) => Boolean(item));
+    console.log(truthyArray);
+
+    /**
+     * Array Reduce : Callback function dari fungsi ini dapat diolah untuk manipulasi data currentValue dan menyimpannya pada 
+     * accumulator. Selain itu, fungsi reduce juga memiliki nilai awal yang dapat didefinisikan pada bagian initialValue.
+    */
+    const students = [
+    {
+        name: 'Harry',
+        score: 60,
+    },
+    {
+        name: 'James',
+        score: 75,
+    },
+    {
+        name: 'Ron',
+        score: 90,
+    },
+    {
+        name: 'Bethy',
+        score: 75,
+    }
+    ];
+
+    const totalScore = students.reduce((acc, student) => acc + student.score, 0);
+    console.log(totalScore);
+
+    /**
+     * Array Some : Nilai yang dihasilkan didasarkan pada pernyataan apakah ada setidaknya satu dari deretan nilai dalam array tersebut 
+     * lolos berdasarkan kriteria yang kita tuliskan dalam callback function.
+     * Contoh penggunaannya misalkan kita ingin mengetahui apakah dalam deretan angka terdapat angka genap.
+    */
+    const array = [1, 2, 3, 5];
+    const even = array.some(element => element % 2 === 0);
+    console.log(even);
+
+    /**
+     * Array find
+     * Mirip dengan array.some(), array.find() sesuai namanya digunakan untuk mencari apakah di dalam deretan nilai terdapat nilai yang 
+     * sesuai dengan kriteria yang kita definisikan pada callback function. Yang membedakan array.find() dengan array.some(), find akan 
+     * menghasilkan satu nilai dari elemen yang pertama kali ditemukan berdasarkan kriteria tertentu dan akan menghasilkan nilai undefined
+     * bila tidak ada kriteria yang terpenuhi pada item array.
+    */
+    const findJames = students.find(student => student.name === 'James');
+    console.log(findJames);
+    const findGunz = students.find(student => student.name === 'Gunz');
+    console.log(findGunz);
+
+    /**
+     * Array sort array.sort() merupakan fungsi bawaan dari array yang berguna untuk melakukan pengurutan nilai dari sebuah deretan  
+     * nilai. Secara default, fungsi sort akan mengubah semua nilai dalam deretan menjadi bentuk string dan mengurutkannya secara 
+     * ascending.
+    */
+   const months = ['March', 'Jan', 'Feb', 'Dec'];
+   months.sort();
+   console.log(months);
+   
+   const array1 = [1, 30, 4, 1000, 101, 121];
+   array1.sort();
+   console.log(array1);
+
+   // Compare Function : array.sort([compareFunction])
+    const sorting = array1.sort((a, b) => {
+        return a - b;
+    });
+    console.log(sorting);
+
+    /**
+     * Array every array.every() merupakan fungsi bawaan dari array yang digunakan untuk mengecheck apakah semua nilai dari sebuah array  
+     * sesuai dengan kriteria yang didefinisikan. Kembalian dari array.every() adalah nilai Boolean.
+    */
+    const scores = [70, 85, 90];
+    const minimumScore = 65;
+
+    const examPassed = scores.every(score => score >= minimumScore);
+    console.log(examPassed);
+    /**
+     * Array forEach Array forEach merupakan fungsi bawaan dari array yang berfungsi untuk memanggil fungsi callback pada setiap iterasi  
+     * index array. Berbeda dari fungsi array lain yang sudah kita bahas, fungsi ini tidak mengembalikan nilai apa pun. Jadi fungsi ini  
+     * secara harfiah hanya berfungsi untuk memanggil fungsi callback-nya saja, tak lebih dari itu.
+     * Namun, ketahuilah bahwa ketika menggunakan forEach, kita tidak bisa menggunakan operator break atau continue pada proses  
+     * perulangan (Anda bisa melakukannya pada perulangan for). Hal ini juga berlaku ketika pada fungsi map dan filter.
+    */
+    const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+    for (let i = 0; i < names.length; i++) {
+        if (names[i] === 'Jeff') continue;
+
+        console.log(`Hello, ${names[i]}!`);
+    }
+
+    names.forEach((name) => {
+        // if (name === 'Jeff') continue; // continue atau break tidak bisa dilakukan di dalam foreach() dan map()
+        console.log(`Hello, ${name}`);
+    });
+</script>
