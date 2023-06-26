@@ -1,0 +1,36 @@
+<script>
+    // cara 1 : membuat class dengan Function
+    function Car1(color){
+        this.color = color
+    }
+    Car1.prototype.drive = function(){ // membuat method drive
+        console.log("Car is driving.");
+    }
+
+    // cara 2 : membuat class dengan sintaks class
+    class Car2 {
+        constructor(color){
+            this.color = color;
+        }
+
+        // membuat method drive
+        drive(){
+            console.log("Car is driving.");
+        }
+    }
+
+    const getBatteryStats = async ()=>{
+        try{
+            const battery = await navigator.getBattery();
+            // battery.onlevelchange((tes) => {
+            //     console.log(tes);
+            // })
+            console.log(battery);
+            return battery;
+        }catch(err){
+            console.log(err);
+        }
+    }
+
+    getBatteryStats()
+</script>

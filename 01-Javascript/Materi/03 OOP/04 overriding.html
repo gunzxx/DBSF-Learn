@@ -1,0 +1,36 @@
+<script>
+    class MailService {
+        constructor(sender) {
+            this.sender = sender;
+        }
+    }
+
+    class WhatsAppService extends MailService {
+        // constructor overriding
+        constructor(sender, isBusiness) {
+            super(sender);
+            this.sender = sender;
+            this.isBusiness = isBusiness;
+        }
+        
+        // Overriding method
+        sendMessage(message, receiver) {
+            console.log(`${this.sender} sent ${message} to ${receiver} via WhatsApp`);
+        }
+
+        // Overriding method
+        sendMessage(message, receiver) {
+            // memanggil method sendMessage pada superclass
+            super.sendMessage(message, receiver);
+
+            console.log('message sent via WhatsApp');
+        }
+    }
+
+    const whatsapp = new WhatsAppService('+6281234567890', true);
+
+    /**
+    * Output:
+    * ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+    */
+</script>
