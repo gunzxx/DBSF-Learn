@@ -1,0 +1,22 @@
+{
+  "name": "dbsf",
+  "version": "1.0.0",
+  "description": "DBSF - Pemrograman Dasar JavaScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gunzxx/DBSF-dicoding.git"
+  },
+  "keywords": [
+    "dbsf"
+  ],
+  "author": "gunzxx",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gunzxx/DBSF-dicoding/issues"
+  },
+  "homepage": "https://github.com/gunzxx/DBSF-dicoding#readme"
+}
