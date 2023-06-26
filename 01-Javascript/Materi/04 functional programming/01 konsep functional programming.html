@@ -1,0 +1,98 @@
+<script>
+    // 
+    /**
+     * Pure function
+     * Untuk mengetahui apakah fungsi sudah pure atau belum, pastikan 3 konsep ini ada pada fungsi yang Anda buat:
+     ** Mengembalikan nilai yang sama bila inputannya (nilai parameter) sama.
+     ** Hanya bergantung pada argumen yang diberikan.
+     ** Tidak menimbulkan efek samping.
+    */
+    // tidak memerlukan variabel dari luar
+    const hitungLuasLingkaran = (jari_jari) => {
+        const phi = 3.14;
+        return phi * jari_jari * jari_jari;
+    }
+    console.log(hitungLuasLingkaran(10));
+
+    // tidak mengubah variabel di luar
+    const createPersonWithAge = (age, person) => {
+        return { ...person, age };
+    };
+
+    const person = {
+        name: 'Bobo',
+        age: 19,
+    };
+
+    const newPerson = createPersonWithAge(18, person);
+
+    console.log({
+        person,
+        newPerson
+    });
+
+    // Immutable : sebuah objek tidak boleh diubah setelah objek tersebut dibuat.
+    const user = {
+        firstName: "Guntur",
+        lastName: "Wahyudii"
+    };
+
+    const changeUserLastName = (newLastName, user) => {
+        // user.lastName = newLastName; // tidak boleh mengubah nilai lastName user sebelumnya dalam konsep immutable.
+        // return user;
+        return { ...user, lastName: newLastName };
+    }
+
+    const gunz = changeUserLastName("Wahyudi", user);
+    console.log(user);
+    console.log(gunz);
+
+    // Rekursif : teknik pada sebuah function yang memanggil dirinya sendiri.
+    const countDown = (start) => {
+        console.log(start);
+        if (start > 0) countDown(start - 1);
+    }
+    countDown(10);
+
+    // Higher order function : fungsi yang dapat menerima fungsi lainnya pada argumen; mengembalikan sebuah fungsi; atau bahkan keduanya.
+    /**
+     * Teknik Higher-Order Function biasanya digunakan untuk:
+     ** Mengabstraksi atau mengisolasi sebuah aksi, event, atau menangani alur asynchronous menggunakan callback, promise, dan lainnya.
+     ** Membuat utilities yang dapat digunakan di berbagai tipe data.
+     ** Membuat teknik currying atau function composition.
+    */
+    // contoh higher-order 1 :
+    const hello = () => {
+        console.log('Hello!')
+    };
+
+    const say = (someFunction) => {
+        someFunction();
+    }
+
+    const sayHello = () => {
+        return () => {
+            console.log('Hello!');
+        }
+    }
+
+    hello();
+    say(hello);
+    sayHello()();
+
+    // contoh higher-order 2 :
+    const names = ['Harry', 'Ron', 'Jeff', 'Thomas'];
+    function arrayMap(arr, action) {
+        function loopTrough(arr, action, newArray = [], index = 0) {
+            const item = arr[index];
+            if (!item) return newArray;
+            return loopTrough(arr, action, [...newArray, action(arr[index])], index + 1);
+        }
+        return loopTrough(arr, action);
+    }
+
+    const newNames = arrayMap(names, (name) => `${name}!`);
+
+    console.log(names);
+    console.log(newNames);
+</script>
