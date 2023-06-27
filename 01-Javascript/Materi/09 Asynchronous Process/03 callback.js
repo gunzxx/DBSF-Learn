@@ -12,25 +12,12 @@ function getUsers(isOnline, callback) {
     }, 3000);
 }
 
-// function usersCallback(users) {
-//     console.log(users);
-// }
-
-// getUsers(
-//     (tes1,tes2) => {
-//         console.log(tes1);
-//         console.log(tes2);
-//     }
-// );
-
-getUsers(
-    true,
-    (error, data) => {
-        if(error){
-            console.log(error.message);
-        }
-        else{
-            console.log(data);
-        }
+function usersCallback(error,data) {
+    if (error) {
+        return console.log(error.message);
     }
-);le.log(data);
+    console.log(data);
+}
+
+getUsers(true,usersCallback);
+getUsers(false,usersCallback);

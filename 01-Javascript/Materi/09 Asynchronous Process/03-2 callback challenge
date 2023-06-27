@@ -1,0 +1,13 @@
+const { getProvinces } = require('./03-2 utils');
+
+// solution
+function provincesCallback(error, provinces) {
+  if (error) {
+    return console.log(error.message);
+  }
+
+  console.log(provinces);
+}
+
+getProvinces(provincesCallback);
+getProvinces(provincesCallback);

@@ -13,13 +13,11 @@ function getUsers1(isOnline:boolean, callback: (error: Error | null, data: any[]
 
 
 getUsers1(
-    true,
+    false,
     (error, data) => {
         if (error) {
-            console.log(error.message);
+            return console.log(error.message);
         }
-        else {
-            console.log(data);
-        }
+        console.log(data);
     }
 );
