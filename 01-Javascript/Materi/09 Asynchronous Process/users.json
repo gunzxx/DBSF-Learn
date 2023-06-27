@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "name": "Guntur",
+        "location": "Jember"
+    },
+    {
+        "id": 2,
+        "name": "Bima",
+        "location": "Banyuwangi"
+    },
+    {
+        "id": 3,
+        "name": "Zulfan",
+        "location": "Mojokerto"
+    },
+    {
+        "id": 4,
+        "name": "Ikbal",
+        "location": "Banyuwangi"
+    },
+    {
+        "id": 5,
+        "name": "Sukma",
+        "location": "Lumajang"
+    },
+    {
+        "id": 6,
+        "name": "Mas Akbar",
+        "location": "Purworejo"
+    },
+    {
+        "id": 7,
+        "name": "Abiemafta",
+        "location": "Jember"
+    },
+    {
+        "id": 8,
+        "name": "Dien",
+        "location": "Banyuwangi"
+    },
+    {
+        "id": 9,
+        "name": "Ridwan",
+        "location": "Jember"
+    },
+    {
+        "id": 10,
+        "name": "Bayu",
+        "location": "Jember"
+    },
+    {
+        "id": 11,
+        "name": "Farhan",
+        "location": "Jember"
+    },
+    {
+        "id": 12,
+        "name": "Gibrail",
+        "location": "Jember"
+    }
+]
