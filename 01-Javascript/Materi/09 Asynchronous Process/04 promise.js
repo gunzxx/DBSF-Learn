@@ -6,7 +6,7 @@
  ** Rejected merupakan keadaan Promise yang gagal terpenuhi.
  */
 
-const { getUser, getWeather } = require('./04-0 utils')
+const { getUser, getWeather } = require('./04 utils')
 
 function getUserWeather(id) {
     let _user;
