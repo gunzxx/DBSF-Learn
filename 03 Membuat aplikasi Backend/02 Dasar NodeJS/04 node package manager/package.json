@@ -1,0 +1,17 @@
+{
+  "name": "04-node-package-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "moment.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "coba": "SET NODE_ENV=development node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4"
+  }
+}
