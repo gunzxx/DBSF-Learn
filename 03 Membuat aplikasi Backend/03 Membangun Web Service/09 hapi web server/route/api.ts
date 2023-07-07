@@ -1,30 +1,68 @@
+// require('node');
+
 const api = [
     {
         method: '*',
         path: '/',
-        handler: (request, h) => {
-            return "Halaman tidak dapat diakses dengan method tersebut."
+        handler: (_, h) => {
+            return h
+            .response({
+                message: "Halaman tidak dapat diakses dengan method tersebut."
+            })
+            .code(400)
         },
     },
     {
         method: 'GET',
         path: '/',
+        handler: (_, h) => {
+            return h.response({
+                message: "Homepage"
+            })
+        },
+    },
+    {
+        method: 'GET',
+        path: '/about',
+        handler: (_, h) => {
+            return h.response({
+                message: "About page"
+            })
+        },
+    },
+    {
+        method: 'GET',
+        path: '/hello/{name}',
         handler: (request, h) => {
-            return "Homepage"
+            const name = request.params.name ?? 'world.'
+            const message = request.query.lang == "id" ? `Selamat datang, ${name}.` : `Welcome, ${name}.`
+            return h.response({
+                message : message
+            })
         },
     },
     {
         method: 'POST',
-        path: '/',
+        path: '/login',
         handler: (request, h) => {
-            return "Post Homepage"
+            const email = request.payload.email
+            const password = request.payload.password
+            const message = email && password ? `Selamat datang di beranda.` : "Data tidak valid."
+            console.log(request.info.cors);
+            return h.response({
+                message: message
+            })
         },
     },
     {
         method: '*',
         path: '/{any*}',
-        handler: (request, h) => {
-            return "Halaman tidak ditemukan."
+        handler: (_, h) => {
+            return h
+            .response({
+                message: "Not Found",
+            })
+            .code(404)
         },
     },
 ];
