@@ -1,11 +1,14 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable import/no-extraneous-dependencies */
-const nanoid = require('nanoid');
+// const nanoid = require('nanoid');
 const notes = require('./notes');
 
 const addNoteHandler = (request, h) => {
   try {
     const { title, tags, body } = request.payload;
-    const id = nanoid.random(16);
+    // const id = nanoid.random(16);
+    const date = new Date();
+    const id = date.getTime();
     const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
 
@@ -58,4 +61,96 @@ const addNoteHandler = (request, h) => {
   }
 };
 
-module.exports = { addNoteHandler };
+const getAllNotesHandler = () => ({
+  status: 'success',
+  data: {
+    notes,
+  },
+});
+
+const getNoteByIdHandler = (request, h) => {
+  const { id } = request.params;
+
+  const note = notes.filter((n) => n.id == id)[0];
+
+  if (note !== undefined) {
+    return {
+      status: 'success',
+      data: {
+        note,
+      },
+    };
+  }
+
+  const response = h.response({
+    status: 'fail',
+    message: 'Catatan tidak ditemukan',
+  });
+  response.code(404);
+
+  return response;
+};
+
+const editNoteByIdHandler = (request, h) => {
+  const { id } = request.params;
+  const index = notes.findIndex((n) => n.id == id);
+
+  if (index !== -1) {
+    const { title, tags, body } = request.payload;
+    const updatedAt = new Date().toISOString();
+    notes[index] = {
+      ...notes[index],
+      title,
+      tags,
+      body,
+      updatedAt,
+    };
+
+    const response = h.response({
+      status: 'success',
+      message: 'Catatan berhasil diperbarui',
+    });
+    response.code(200);
+    return response;
+  }
+
+  const response = h.response({
+    status: 'fail',
+    message: 'Gagal memperbarui catatan. Id tidak ditemukan',
+  });
+  response.code(404);
+
+  return response;
+};
+
+const deleteNoteByIdHandler = (request, h) => {
+  const { id } = request.params;
+  const index = notes.findIndex((n) => n.id == id);
+
+  if (index !== -1) {
+    notes.splice(index, 1);
+
+    const response = h.response({
+      status: 'success',
+      message: 'Catatan berhasil dihapus',
+    });
+    response.code(200);
+    return response;
+  }
+
+  const response = h.response({
+    status: 'fail',
+    message: 'Catatan gagal dihapus. Id tidak ditemukan',
+  });
+  response.code(404);
+
+  return response;
+};
+
+module.exports = {
+  addNoteHandler,
+  getAllNotesHandler,
+  getNoteByIdHandler,
+  editNoteByIdHandler,
+  deleteNoteByIdHandler,
+};

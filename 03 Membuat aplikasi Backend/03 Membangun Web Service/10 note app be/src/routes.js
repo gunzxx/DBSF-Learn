@@ -1,16 +1,37 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { addNoteHandler } = require('./handler');
+const {
+  addNoteHandler,
+  getAllNotesHandler,
+  getNoteByIdHandler,
+  editNoteByIdHandler,
+  deleteNoteByIdHandler,
+} = require('./handler');
 
 const routes = [
   {
     method: 'GET',
     path: '/notes',
-    handler: (_, h) => h.response({ message: 'OK' }),
+    handler: getAllNotesHandler,
+  },
+  {
+    method: 'GET',
+    path: '/notes/{id}',
+    handler: getNoteByIdHandler,
   },
   {
     method: 'POST',
     path: '/notes',
     handler: addNoteHandler,
+  },
+  {
+    method: 'PUT',
+    path: '/notes/{id}',
+    handler: editNoteByIdHandler,
+  },
+  {
+    method: 'DELETE',
+    path: '/notes/{id}',
+    handler: deleteNoteByIdHandler,
   },
 ];
 
