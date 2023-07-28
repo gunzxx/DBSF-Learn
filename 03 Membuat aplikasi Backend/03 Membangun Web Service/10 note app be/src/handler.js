@@ -28,7 +28,6 @@ const addNoteHandler = (request, h) => {
           noteId: id,
         },
       });
-      console.log(newNote);
 
       response.code(201);
       return response;
@@ -42,7 +41,6 @@ const addNoteHandler = (request, h) => {
     response.code(500);
     return response;
   } catch (error) {
-    console.log(error.name);
     if (error.name === 'TypeError') {
       const response = h.response({
         status: 'fail',
@@ -109,6 +107,7 @@ const editNoteByIdHandler = (request, h) => {
     const response = h.response({
       status: 'success',
       message: 'Catatan berhasil diperbarui',
+      data: { note: notes[index] },
     });
     response.code(200);
     return response;
